@@ -108,5 +108,14 @@ public class BookManagerControllerTests {
 
         verify(mockBookManagerServiceImpl, times(1)).updateBookById(book.getId(), book);
     }
+@Test
+public void testDeleteBookById() throws Exception {
 
+
+//    when(mockBookManagerServiceImpl.getBookById(book.getId())).thenReturn(book);
+
+    this.mockMvcController.perform(
+                    MockMvcRequestBuilders.get("/api/v1/book/delete/1"  /*+book.getId()*/))
+            .andExpect(MockMvcResultMatchers.status().isOk());
+}
 }
