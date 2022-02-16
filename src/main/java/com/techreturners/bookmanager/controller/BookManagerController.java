@@ -27,10 +27,10 @@ public class BookManagerController {
     public ResponseEntity<Book> getBookById(@PathVariable Long bookId) {
         return new ResponseEntity<>(bookManagerService.getBookById(bookId), HttpStatus.OK);
     }
-    @GetMapping({"/delete/{bookId}"})
-    public ResponseEntity<List<Book>> deleteBooks() {
-        List<Book> books = bookManagerService.getAllBooks();
-        return new ResponseEntity<>(books, HttpStatus.OK);
+    @DeleteMapping({"/{bookId}"})
+    public ResponseEntity deleteBooks(@PathVariable Long bookId) {
+        bookManagerService.deleteBookById(bookId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     @PostMapping
     public ResponseEntity<Book> addBook(@RequestBody Book book) {

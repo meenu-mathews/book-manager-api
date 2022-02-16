@@ -115,7 +115,7 @@ public void testDeleteBookById() throws Exception {
 
     when(mockBookManagerServiceImpl.getBookById(book.getId())).thenReturn(book);
     this.mockMvcController.perform(
-                    MockMvcRequestBuilders.get("/api/v1/book/delete/4"  /*+book.getId()*/))
+                    MockMvcRequestBuilders.delete("/api/v1/book/4"))
             .andExpect(MockMvcResultMatchers.status().isOk());
     this.mockMvcController.perform(
                     MockMvcRequestBuilders.get("/api/v1/book/4"))
