@@ -27,8 +27,8 @@ public class BookManagerController {
     public ResponseEntity<Book> getBookById(@PathVariable Long bookId) {
         return new ResponseEntity<>(bookManagerService.getBookById(bookId), HttpStatus.OK);
     }
-    @GetMapping({"/{bookId}"})
-    public ResponseEntity<List<Book>> getAllBooks() {
+    @GetMapping({"/delete/{bookId}"})
+    public ResponseEntity<List<Book>> deleteBooks() {
         List<Book> books = bookManagerService.getAllBooks();
         return new ResponseEntity<>(books, HttpStatus.OK);
     }

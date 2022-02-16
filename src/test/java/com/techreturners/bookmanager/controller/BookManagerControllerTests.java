@@ -110,12 +110,17 @@ public class BookManagerControllerTests {
     }
 @Test
 public void testDeleteBookById() throws Exception {
+    testPostMappingAddABook();
+    Book book = new Book(4L, "Book Four", "This is the description for Book Four", "Person Four", Genre.Fantasy);
 
-
-//    when(mockBookManagerServiceImpl.getBookById(book.getId())).thenReturn(book);
-
+    when(mockBookManagerServiceImpl.getBookById(book.getId())).thenReturn(book);
     this.mockMvcController.perform(
-                    MockMvcRequestBuilders.get("/api/v1/book/delete/1"  /*+book.getId()*/))
+                    MockMvcRequestBuilders.get("/api/v1/book/delete/4"  /*+book.getId()*/))
             .andExpect(MockMvcResultMatchers.status().isOk());
+    this.mockMvcController.perform(
+                    MockMvcRequestBuilders.get("/api/v1/book/4"))
+            .andExpect(MockMvcResultMatchers.status().is5xxServerError());
+
+
 }
 }
